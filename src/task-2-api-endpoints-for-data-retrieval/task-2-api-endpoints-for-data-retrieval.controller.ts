@@ -1,4 +1,5 @@
 import { Controller, Get, ParseEnumPipe, Query } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 
 import { Task2ApiEndpointsForDataRetrievalService } from './task-2-api-endpoints-for-data-retrieval.service';
 
@@ -56,6 +57,7 @@ enum Categories {
   'Weather',
 }
 
+@ApiTags('Task 2 - Api Endpoints for Data Retrieval')
 @Controller('task-2-api-endpoints-for-data-retrieval')
 export class Task2ApiEndpointsForDataRetrievalController {
   constructor(

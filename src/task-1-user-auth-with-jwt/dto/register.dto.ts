@@ -1,17 +1,18 @@
 import {
   IsEmail,
   IsString,
-  IsBoolean,
   IsOptional,
   IsNotEmpty,
   IsPhoneNumber,
   IsStrongPassword,
 } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class RegisterDto {
   @IsNotEmpty()
   @IsString()
   @IsEmail()
+  @ApiProperty({ type: String, required: true })
   email: string;
 
   @IsNotEmpty()
@@ -28,26 +29,22 @@ export class RegisterDto {
         'Password must contain atleast \n\n1 uppercare letter, \n1 lowercase letter, \n1 number, and \n1 special character',
     },
   )
+  @ApiProperty({ type: String, required: true })
   password: string;
 
   @IsNotEmpty()
   @IsString()
+  @ApiProperty({ type: String, required: true })
   firstname: string;
 
   @IsOptional()
   @IsString()
+  @ApiProperty({ type: String })
   lastname: string;
 
   @IsOptional()
   @IsString()
   @IsPhoneNumber('IN')
+  @ApiProperty({ type: String })
   phone: string;
-
-  @IsBoolean()
-  @IsOptional()
-  newsletterSigned: boolean;
-
-  @IsBoolean()
-  @IsNotEmpty()
-  termsAndConditions: boolean;
 }
